@@ -1,9 +1,18 @@
-module.exports = { //contendra las configuraciones que iremos agregando
-    content: ['./src/**/*/*.{astro,html,js,jsx}'], //se crea una regla para escuchar los archivos o la estructura d elos mismos que nossotros vamso a estar trabajando, con los asteriscos definimos que no importa en que carpeta este ni tampoco en que carpeta dentro de las carpetas, y con otro que no importa el nombre pero qeu si contenga una de las siguientes extenciones siguientes para poder trabajar con el. despues se pueden ir a gregando mas extenciones para que podamos trabajar con ellos. 
-    theme: { //aqui se agregan las conficuraciones adicionales de comportamiento o simplemente para un tipo de modo ejemplo el modo nocturno. 
-        extend: {
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
+	theme: {
+		fontFamily: {
+			sans: ['Gotham SSm A, sand-serif']
+		},
+		screens: {
+			'mobile': { 'min': '320px', 'max': '1200px' },
+			// => @media (min-width: 1024px) { ... }
 
-        }
-    },
-    plugins: []
+			'desktop': { 'min': '1200px' },
+			// => @media (min-width: 1280px) { ... }
+		},
+		extend: {},
+	},
+	plugins: [],
 }

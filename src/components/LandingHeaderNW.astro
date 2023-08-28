@@ -1,0 +1,148 @@
+---
+import Logo from "./Logo.astro";
+import SideBar from "./SideBar.astro";
+---
+
+<header
+  id="landing-header"
+  class="py-3 px-10 flex items-center fixed top-0 w-full justify-between z-40 text-white"
+>
+  <div class="flex flex-grow basis-0">
+    <Logo />
+  </div>
+
+  <nav class="nav-desktop-1 mobile:invisible">
+    <ul
+      class="flex text-xs [&>li>a]:transition-colors [&>li>a]:duration-500 [&>li>a]:text-current [&>li>a]:font-medium [&>li>a]:inline-block [&>li>a]:px-4 [&>li>a]:py-1"
+    >
+      <li><a href="#">Vehículos</a></li>
+      <li><a href="#">Energia</a></li>
+      <li><a href="#">Carga</a></li>
+      <li><a href="#">Descubrir</a></li>
+      <li><a href="#">Tienda</a></li>
+    </ul>
+  </nav>
+  <nav
+    class="nav-desktop-2 flex flex-grow justify-end basis-0 mobile:invisible"
+  >
+    <ul
+      class="flex text-sm [&>li>a]:transition-colors [&>li>a]:duration-500 [&>li>a]:text-current [&>li>a]:font-medium [&>li>a]:inline-block [&>li>a]:px-1 [&>li>a]:py-1"
+    >
+      <li>
+        <a href="#">
+          <svg
+            class="h-6 w-6 text-white"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path stroke="none" d="M0 0h24v24H0z"></path>
+            <circle cx="12" cy="12" r="9"></circle>
+            <line x1="12" y1="17" x2="12" y2="17.01"></line>
+            <path d="M12 13.5a1.5 1.5 0 0 1 1 -1.5a2.6 2.6 0 1 0 -3 -4"
+            ></path></svg
+          >
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <svg
+            class="h-6 w-6 text-white"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.5"
+              d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"
+            ></path>
+          </svg>
+        </a>
+      </li>
+      <li class="menu-button-desktop">
+        <a href="#">
+          <svg
+            class="h-6 w-6 text-white"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.5"
+              d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+            ></path>
+          </svg>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <!--
+		<SidebarDesktop />
+		<SideBarMobile />
+        <div
+          id="menu-backdrop"
+          class="absolute bg-black/5 backdrop-blur-lg rounded translate-x-[var(--left)] translate-y-[var(--top)] left-0 top-0 w-[var(--width)] h-[var(--height)] transition-all duration-500 ease-in-out opacity-0 -z-10"
+        >
+        </div>
+	-->
+  <SideBar />
+</header>
+
+<script>
+  const listItem = document.querySelectorAll("#landing-header li");
+  const menuBackDrop = document.querySelector("#menu-backdrop") as HTMLElement;
+
+  listItem.forEach((item) => {
+    item.addEventListener("mouseenter", () => {
+      const { left, top, width, height } = item.getBoundingClientRect();
+      const { clientHeight, clientWidth } = item;
+
+      menuBackDrop.style.setProperty("--left", `${left}px`);
+      menuBackDrop.style.setProperty("--top", `${top}px`);
+      menuBackDrop.style.setProperty("--width", `${width}px`);
+      menuBackDrop.style.setProperty("--height", `${height}px`);
+
+      menuBackDrop.style.opacity = "1";
+      menuBackDrop.style.visibility = "visible";
+    });
+    item.addEventListener("mouseleave", () => {
+      menuBackDrop.style.opacity = "0";
+      menuBackDrop.style.visibility = "hidden";
+    });
+  });
+</script>
+
+<script>
+  const headerElements = document.querySelector(
+    "#landing-header"
+  ) as HTMLElement;
+
+  const observerOptions = {
+    root: null,
+    rootMargin: "0px", //cuando se vea el elemento
+    threshold: 0.75, //porcentaje de visibilidad
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      const { isIntersecting } = entry;
+      if (isIntersecting) {
+        const color = entry.target.getAttribute("data-header-color");
+        headerElements.style.color = color;
+      }
+    });
+  }, observerOptions); //primer parametro de intersection observer min 57
+
+  const sectionElements = document.querySelectorAll(".landing-section");
+  sectionElements.forEach((section) => observer.observe(section));
+  /*Intersection observer detecta cuando un elemento esta en el viewport cual es su posicion ccuanto de ese elemento existe en el viewport y detectarlo*/
+</script>

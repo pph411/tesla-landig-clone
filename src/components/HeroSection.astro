@@ -1,0 +1,29 @@
+---
+import Section from "./Section.astro";
+---
+
+<Section
+  title="Vive la experiencia Tesla"
+  subtitle="Agende una prueba de conduccion hoy mismo"
+  color="white"
+>
+  <div slot="footer">
+    <a
+      title="Prueba de manejo"
+      target="_blank"
+      rel="external noopener noreferrer"
+      class="border-[3px] border-white bg-white/5 backdrop-blur-sm text-sm rounded font-medium text-white px-12 py-2 inline-block hover:bg-white hover:text-black transition-colors duration-700"
+      href="https://www.tesla.com/es_mx/drive"
+    >
+      Prueba de manejo</a
+    >
+  </div>
+
+  <video
+    slot="background"
+    class="object-cover h-screen w-screen"
+    autoplay
+    loop
+    muted
+    src="hero-video.webm"></video>
+</Section>

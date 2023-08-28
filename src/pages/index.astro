@@ -1,31 +1,43 @@
 ---
+import ChargeSection from "../components/ChargeSection.astro";
+import LandingHeader from "../components/LandingHeader.astro";
 import Layout from "../layouts/Layout.astro";
-import Card from "../components/Card.astro";
-import Hero from "../components/Hero.astro";
-import header from "../components/header.astro";
+import HeroSection from "../components/HeroSection.astro";
+import ModelS from "../components/ModelS.astro";
+import Model3 from "../components/Model3.astro";
+import ModelY from "../components/ModelY.astro";
+import ModelX from "../components/ModelX.astro";
+import PowerwallSE from "../components/PowerwallSE.astro";
 ---
 
-<Layout title="Welcome to Astro.">
-	<main>
-		<header title="AstroBuild.tips"></header>
-		<Hero />
-		<ul role="list" class="link-card-grid">
-			<Card title="Hello joto" time="2023-06-27" tags="javascript" />
-		</ul>
-	</main>
+<Layout title="Clonsla">
+  <LandingHeader />
+
+  <main
+    class="snap-y snap-mandatory relative w-full h-screen overflow-auto scroll-m-0"
+  >
+    <div class="snap-center">
+      <HeroSection />
+    </div>
+    <div class="snap-center">
+      <ModelS /> 
+    </div>
+    <div class="snap-center">
+      <Model3 />
+    </div>
+    <div class="snap-center">
+      <ModelY />
+    </div>
+    <div class="snap-center">
+      <ModelX />
+    </div>
+    <div class="snap-center">
+      <PowerwallSE />
+    </div>
+    <div class="snap-center">
+      <ChargeSection />
+    </div>
+  </main>
 </Layout>
 
-<style>
-	main {
-		margin: auto;
-		padding: 1.5rem;
-		max-width: 60ch;
-	}
-
-	.link-card-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-		gap: 1rem;
-		padding: 0;
-	}
-</style>
+<script></script>

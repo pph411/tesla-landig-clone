@@ -1,0 +1,146 @@
+---
+import Logo from "./Logo.astro";
+import SideBar from "./SideBar.astro";
+---
+
+<header
+  id="landing-header"
+  class="py-3 px-10 flex items-center fixed top-0 w-full justify-between z-40 text-white"
+>
+  <div class="flex flex-grow basis-0">
+    <a href="index.html">
+      <Logo />
+    </a>
+  </div>
+
+  <nav class="nav-desktop-1 mobile:invisible">
+    <ul
+      class="flex text-sm [&>li>a]:transition-colors [&>li>a]:duration-500 [&>li>a]:text-current [&>li>a]:font-medium [&>li>a]:inline-block [&>li>a]:px-3 [&>li>a]:py-2"
+    >
+      <li>
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.tesla.com/es_mx/models">Model S</a
+        >
+      </li>
+      <li>
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.tesla.com/es_mx/model3">Model 3</a
+        >
+      </li>
+      <li>
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.tesla.com/es_mx/modelx">Model X</a
+        >
+      </li>
+      <li>
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.tesla.com/es_mx/modely">Model Y</a
+        >
+      </li>
+      <li>
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.tesla.com/es_mx/powerwall">Powerwall</a
+        >
+      </li>
+      <li>
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.tesla.com/es_mx/charging">Charge</a
+        >
+      </li>
+    </ul>
+  </nav>
+  <nav
+    class="nav-desktop-2 flex flex-grow justify-end basis-0 mobile:invisible"
+  >
+    <ul
+      class="flex text-sm [&>li>a]:transition-colors [&>li>a]:duration-500 [&>li>a]:text-current [&>li>a]:font-medium [&>li>a]:inline-block [&>li>a]:px-3 [&>li>a]:py-2"
+    >
+      <li>
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://shop.tesla.com/es_mx?redirect=no">Tienda</a
+        >
+      </li>
+      <li>
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://auth.tesla.com/es_mx/oauth2/v1/authorize?redirect_uri=https%3A%2F%2Fwww.tesla.com%2Fteslaaccount%2Fowner-xp%2Fauth%2Fcallback&response_type=code&client_id=ownership&scope=offline_access%20openid%20ou_code%20email%20phone&audience=https%3A%2F%2Fownership.tesla.com%2F&locale=es-MX"
+          >Cuenta</a
+        >
+      </li>
+      <li class="menu-button-desktop"><a href="#">Menu</a></li>
+    </ul>
+  </nav>
+
+  <SideBar />
+
+  <div
+    id="menu-backdrop"
+    class="absolute bg-black/5 backdrop-blur-lg rounded translate-x-[var(--left)] translate-y-[var(--top)] left-0 top-0 w-[var(--width)] h-[var(--height)] transition-all duration-500 ease-in-out opacity-0 -z-10"
+  >
+  </div>
+</header>
+
+<script>
+  const listItem = document.querySelectorAll("#landing-header li");
+  const menuBackDrop = document.querySelector("#menu-backdrop") as HTMLElement;
+
+  listItem.forEach((item) => {
+    item.addEventListener("mouseenter", () => {
+      const { left, top, width, height } = item.getBoundingClientRect();
+      const { clientHeight, clientWidth } = item;
+
+      menuBackDrop.style.setProperty("--left", `${left}px`);
+      menuBackDrop.style.setProperty("--top", `${top}px`);
+      menuBackDrop.style.setProperty("--width", `${width}px`);
+      menuBackDrop.style.setProperty("--height", `${height}px`);
+
+      menuBackDrop.style.opacity = "1";
+      menuBackDrop.style.visibility = "visible";
+    });
+    item.addEventListener("mouseleave", () => {
+      menuBackDrop.style.opacity = "0";
+      menuBackDrop.style.visibility = "hidden";
+    });
+  });
+</script>
+
+<script>
+  const headerElements = document.querySelector(
+    "#landing-header"
+  ) as HTMLElement;
+
+  const observerOptions = {
+    root: null,
+    rootMargin: "0px", //cuando se vea el elemento
+    threshold: 0.75, //porcentaje de visibilidad
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      const { isIntersecting } = entry;
+      if (isIntersecting) {
+        const color = entry.target.getAttribute("data-header-color");
+        headerElements.style.color = color;
+      }
+    });
+  }, observerOptions); //primer parametro de intersection observer
+
+  const sectionElements = document.querySelectorAll(".landing-section");
+  sectionElements.forEach((section) => observer.observe(section));
+  /*Intersection observer detecta cuando un elemento esta en el viewport cual es su posicion cuanto de ese elemento existe en el viewport y detectarlo*/
+</script>

@@ -1,0 +1,34 @@
+<div
+    class="overlay absolute top-0 left-0 w-[100%] h-screen backdrop-blur-sm z-0 transition ease-in-out duration-1000 delay-1000 hidden"
+>
+    <script>
+        const menuButtonDesktop = document.querySelector(
+            ".menu-button-desktop"
+        );
+        const sidebarDesktop = document.querySelector(".sidebar-desktop");
+        const overlay = document.querySelector(".overlay");
+
+        menuButtonDesktop.addEventListener("click", () => {
+            //elimina
+            overlay.classList.toggle("hidden");
+        });
+
+        sidebarDesktop.addEventListener("click", (e) => {
+            const target = e.target as HTMLElement;
+            const nearestSidebar = target.closest(".sidebar-desktop");
+
+            if (nearestSidebar) {
+                //elimina
+                overlay.classList.toggle("hidden");
+            }
+        });
+
+        overlay.addEventListener("click", () => {
+            sidebarDesktop.classList.toggle("translate-x-full");
+            sidebarDesktop.classList.toggle("opacity-0");
+            sidebar.classList.toggle("translate-x-full");
+            sidebar.classList.toggle("opacity-0");
+            overlay.classList.toggle("hidden");
+        });
+    </script>
+</div>

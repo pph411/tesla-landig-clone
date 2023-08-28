@@ -1,0 +1,31 @@
+---
+import Section from "./Section.astro";
+---
+
+<Section title="Model 3" subtitleUn="Agenda una prueba de manejo" color="black">
+  <div slot="footer" class="gap-x-6 flex mx-auto">
+    <a
+      target="_blank"
+      rel="external noopener noreferrer"
+      class="border-[3px] border-white/0 bg-white/80 text-[14px] rounded font-medium text-black px-12 py-2 transition ease-in-out inline-block hover:scale-105 duration-500"
+      href="https://www.tesla.com/es_mx/inventory/new/m3"
+    >
+      Explorar inventario</a
+    >
+    <a
+      target="_blank"
+      rel="external noopener noreferrer"
+      class="border-[3px] border-gray-800/0 bg-gray-900/60 text-[14px] rounded font-medium text-white px-12 py-2 inline-block transition ease-in-out hover:scale-105 duration-500"
+      href="https://www.tesla.com/es_mx/model3/design#overview"
+    >
+      Orden personalizado</a
+    >
+  </div>
+
+  <img
+    slot="background"
+    src="/tsla-model-e.jpg"
+    alt="Model 3"
+    class="h-full w-screen object-cover object-center"
+  />
+</Section>

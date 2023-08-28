@@ -1,0 +1,38 @@
+---
+const { color, title, subtitle, subtitleUn, showFooterContent } = Astro.props;
+const textColor = `text-${color}`;
+import FooterMenu from "./FooterMenu.astro";
+---
+
+<section
+  class="landing-section bg-black h-screen w-full text-center overflow-hidden relative"
+  data-header-color={color}
+>
+  <div class="z-30 relative h-full flex flex-col">
+    <header>
+      <h2 class={`${textColor} pt-28 text-[40px] font-medium`}>
+        {title}
+      </h2>
+      <p class={`${textColor} text-sm`}>
+        {subtitle}
+      </p>
+      <a
+        class={`${textColor} text-sm underline underline-offset-4`}
+        target="_blank"
+        rel="noopener noreferrer"
+        href="https://www.tesla.com/es_mx/drive"
+      >
+        {subtitleUn}
+      </a>
+    </header>
+    <footer class="flex flex-col flex-grow flex-nowrap justify-end pb-20">
+      <slot name="footer" />
+
+      {showFooterContent && <FooterMenu />}
+    </footer>
+  </div>
+
+  <div class="absolute top-0 bottom-0 h-full z-10">
+    <slot name="background" />
+  </div>
+</section>
