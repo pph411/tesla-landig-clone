@@ -1,54 +1,43 @@
-# Astro Starter Kit: Basics
+## Overview
 
-```
-npm create astro@latest -- --template basics
-```
+This is a copy of the old tesla landing page.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+### The challenge for me was:
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+- Use Astro as a framework
+- Get used to read the documentation to solve problems
+- Dont ask many code solutions to chat gpt
+- Make reutilizable components
+- Responsive
 
-![basics](https://user-images.githubusercontent.com/4677417/186188965-73453154-fdec-4d6b-9c34-cb35c248ae5b.png)
+### Screenshot
 
-## 🚀 Project Structure
+[Imgur-mobile-hero](https://i.imgur.com/M43twvo.jpg)
+[Imgur-mobile-hero-sidebar](https://i.imgur.com/0aupBZA.jpg)
+[Imgur-desktop-hero](https://i.imgur.com/Hwm4SW3.jpg)
+[Imgur-desktop-models](https://i.imgur.com/2DvTr1i.jpg)
+[Imgur-desktop-model3-sidebar](https://i.imgur.com/pY1LXsZ.jpg)
 
-Inside of your Astro project, you'll see the following folders and files:
+### Built with
 
-```
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+- Semantic HTML5 markup
+- Tailwind
+- Astro
+- Javascript
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+### What I learned
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+- A bit of everything.
 
-Any static assets, like images, can be placed in the `public/` directory.
+### Continued development
 
-## 🧞 Commands
+I don't have plans to continue because i want to give a try to the new website.
 
-All commands are run from the root of the project, from a terminal:
+### Useful resources
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:3000`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+https://www.youtube.com/watch?v=S_oLr_np4S8 (I started with the video and it ispired me to continue)
 
-## 👀 Want to learn more?
+## Author
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- Midu.dev [https://github.com/midudev]
+- pph411 - [https://github.com/pph411]
